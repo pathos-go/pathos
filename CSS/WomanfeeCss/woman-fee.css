@@ -1,0 +1,929 @@
+@charset "UTF-8";
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  color: #333;
+  font-family: 'Kokoro', 'Montserrat', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  cursor: pointer;
+}
+
+p {
+  line-height: 1.5;
+}
+
+.span-strong {
+  font-style: italic;
+  font-weight: bold;
+}
+
+.span-small {
+  display: block;
+  font-size: 12px;
+  padding-top: 20px;
+}
+
+.icon-small {
+  font-size: 5px;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  background: #fff;
+  z-index: 10;
+}
+
+.header_wrapper .header_btns1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-shadow: 3px 3px 10px #777;
+          box-shadow: 3px 3px 10px #777;
+}
+
+.header_wrapper .header_btns1 .header_logo {
+  margin: 10px;
+  opacity: .7;
+}
+
+.header_wrapper .header_btns1 .checkbox {
+  display: none;
+}
+
+.header_wrapper .header_btns1 .hamburgerIcon {
+  width: 30px;
+  height: 30px;
+  margin: 10px 20px 10px 0;
+  cursor: pointer;
+  -webkit-transition: .3s;
+  transition: .3s;
+  z-index: 20;
+}
+
+.header_wrapper .header_btns1 .hamburgerIcon .menuLine {
+  position: relative;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 1px;
+  background-color: #333;
+}
+
+.header_wrapper .header_btns1 .hamburgerIcon .menuLine:nth-child(1) {
+  margin: 4px auto;
+}
+
+.header_wrapper .header_btns1 .hamburgerIcon .menuLine:nth-child(2) {
+  margin: 8px auto;
+}
+
+.header_wrapper .header_btns1 .hamburgerIcon .menuLine:nth-child(1), .header_wrapper .header_btns1 .hamburgerIcon .menuLine:nth-child(3) {
+  top: 0;
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+  -webkit-transition: top .25s .2s, -webkit-transform .25s;
+  transition: top .25s .2s, -webkit-transform .25s;
+  transition: top .25s .2s, transform .25s;
+  transition: top .25s .2s, transform .25s, -webkit-transform .25s;
+}
+
+.header_wrapper .header_btns1 .hamburgerIcon .menuLine:nth-child(2) {
+  -webkit-transition: width .25s;
+  transition: width .25s;
+}
+
+.header_wrapper .header_btns1 .checkbox:checked ~ .hamburgerIcon .menuLine:nth-child(1) {
+  top: 10px;
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+  -webkit-transition: top .25s, -webkit-transform .25s .2s;
+  transition: top .25s, -webkit-transform .25s .2s;
+  transition: top .25s, transform .25s .2s;
+  transition: top .25s, transform .25s .2s, -webkit-transform .25s .2s;
+}
+
+.header_wrapper .header_btns1 .checkbox:checked ~ .hamburgerIcon .menuLine:nth-child(2) {
+  width: 0;
+  -webkit-transition: width .5s;
+  transition: width .5s;
+}
+
+.header_wrapper .header_btns1 .checkbox:checked ~ .hamburgerIcon .menuLine:nth-child(3) {
+  top: -10px;
+  -webkit-transform: rotate(-135deg);
+          transform: rotate(-135deg);
+  -webkit-transition: top .25s, -webkit-transform .25s .2s;
+  transition: top .25s, -webkit-transform .25s .2s;
+  transition: top .25s, transform .25s .2s;
+  transition: top .25s, transform .25s .2s, -webkit-transform .25s .2s;
+}
+
+.header_wrapper .header_btns1 .gnav {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: 10;
+  text-align: center;
+  padding-top: 20px;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: .3s;
+  transition: .3s;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.header_wrapper .header_btns1 .gnav .gnav_list .gnav_item {
+  font-size: 16px;
+  font-style: italic;
+  margin: 15px;
+}
+
+.header_wrapper .header_btns1 .gnav .gnav_list .gnav_item > a {
+  padding: 15px;
+}
+
+.header_wrapper .header_btns1 .gnav .gnav_list .gnav_item:nth-child(5) {
+  margin-top: 50px;
+}
+
+.header_wrapper .header_btns1 .gnav .gnav_list .gnav_item:nth-child(5) p {
+  line-height: 1.1;
+}
+
+.header_wrapper .header_btns1 .gnav .gnav_list .gnav_item:nth-child(5) .gnav_gender {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.header_wrapper .header_btns1 .gnav .gnav_list .gnav_item:nth-child(5) .gnav_gender > a, .header_wrapper .header_btns1 .gnav .gnav_list .gnav_item:nth-child(5) .gnav_gender span {
+  font-style: normal;
+  display: block;
+  padding: 5px 15px;
+}
+
+.header_wrapper .header_btns1 .gnav .gnav_list .gnav_item:nth-child(5) .gnav_gender > a.man, .header_wrapper .header_btns1 .gnav .gnav_list .gnav_item:nth-child(5) .gnav_gender span.man {
+  color: #056ffa;
+}
+
+.header_wrapper .header_btns1 .gnav .gnav_list .gnav_item:nth-child(5) .gnav_gender > a.woman, .header_wrapper .header_btns1 .gnav .gnav_list .gnav_item:nth-child(5) .gnav_gender span.woman {
+  color: #ffabce;
+}
+
+.header_wrapper .header_btns1 .checkbox:checked ~ .gnav {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (min-width: 520px) {
+  .header {
+    margin: 0px auto;
+  }
+  .header_wrapper .header_btns1 .gnav {
+    padding-top: 100px;
+  }
+  .header_wrapper .header_btns1 .gnav .gnav_list .gnav_item {
+    font-size: 20px;
+    margin: 30px;
+  }
+  .header_wrapper .header_btns1 .gnav .gnav_list .gnav_item > a {
+    max-width: 300px;
+    border-radius: 25px;
+    color: #fff;
+    background-color: #ffabce;
+    padding: 15px;
+    margin: 0 auto;
+    opacity: .7;
+  }
+  .header_wrapper .header_btns1 .gnav .gnav_list .gnav_item:nth-of-type(5) {
+    max-width: 300px;
+    border-radius: 35px;
+    color: #fff;
+    background-color: #ffabce;
+    padding: 5px 0;
+    margin: auto;
+    opacity: .7;
+  }
+  .header_wrapper .header_btns1 .gnav .gnav_list .gnav_item:nth-of-type(5) .gnav_gender {
+    margin: 0;
+  }
+  .header_wrapper .header_btns1 .gnav .gnav_list .gnav_item:nth-of-type(5) .gnav_gender > a.woman, .header_wrapper .header_btns1 .gnav .gnav_list .gnav_item:nth-of-type(5) .gnav_gender span.woman {
+    color: #ff1e1e;
+  }
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+  main
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
+main {
+  padding-top: 50px;
+  margin: 0 auto;
+}
+
+main .sec.fee {
+  margin-bottom: 70px;
+}
+
+main .sec.fee .h2 {
+  color: #fff;
+  font-size: 17px;
+  letter-spacing: .2em;
+  text-align: center;
+  padding: 20px 30px;
+  margin-bottom: 30px;
+  background: #ffabce;
+}
+
+main .sec.fee .table {
+  width: 280px;
+  font-size: 17px;
+  margin: 0 auto;
+  display: -ms-grid;
+  display: grid;
+  grid-template: "gender gender" 60px "entry  e-item" 30px "e-text e-text" 100px "much   m-item" 45px "m-text m-text"  /140px  140px;
+}
+
+main .sec.fee .table .gender {
+  grid-area: gender;
+  color: #ffabce;
+  text-align: center;
+}
+
+main .sec.fee .table .entry {
+  grid-area: entry;
+  padding-left: 10px;
+}
+
+main .sec.fee .table .entry span {
+  font-size: 14px;
+}
+
+main .sec.fee .table .e-item {
+  grid-area: e-item;
+  text-align: right;
+}
+
+main .sec.fee .table .e-item span {
+  display: inline-block;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+main .sec.fee .table .e-text {
+  grid-area: e-text;
+  font-size: 12px;
+  text-align: center;
+}
+
+main .sec.fee .table .e-text p {
+  margin: 10px 25px;
+  text-indent: -1.3em;
+}
+
+main .sec.fee .table .e-text p::before {
+  content: "※";
+  padding-right: 5px;
+}
+
+main .sec.fee .table .much {
+  grid-area: much;
+  padding-left: 10px;
+}
+
+main .sec.fee .table .m-item {
+  grid-area: m-item;
+  text-align: center;
+  line-height: 50px;
+}
+
+main .sec.fee .table .m-item span {
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+main .sec.fee .table .m-text {
+  grid-area: m-text;
+  font-size: 12px;
+  text-align: left;
+  margin-bottom: 50px;
+}
+
+main .sec.fee .table .m-text p {
+  font-size: 12px;
+  margin: 10px 0 40px 10px;
+  text-indent: -1.6em;
+}
+
+main .sec.fee .table .m-text p::before {
+  content: "※";
+  padding-right: 10px;
+}
+
+main .sec.cheer .h2 {
+  color: #fff;
+  font-size: 17px;
+  text-align: center;
+  padding: 20px 30px;
+  letter-spacing: .2em;
+  margin-bottom: 30px;
+  background: #ffabce;
+}
+
+main .sec.cheer .h3 {
+  text-align: center;
+  margin: 30px;
+}
+
+main .sec.cheer .h3 .condition {
+  font-size: 17px;
+}
+
+main .sec.cheer .h3 .star {
+  color: yellow;
+  vertical-align: bottom;
+}
+
+main .sec.cheer .cheer_list {
+  max-width: 450px;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  margin: 20px auto;
+}
+
+main .sec.cheer .cheer_list .cheer_item {
+  margin: 20px 5%;
+}
+
+main .sec.cheer .cheer_list .cheer_item p {
+  font-size: 12px;
+  text-align: left;
+  margin: 40px 0 40px 5%;
+  text-indent: -1.5em;
+}
+
+main .sec.cheer .cheer_list .cheer_item p::before {
+  content: "※";
+  padding-right: 5px;
+}
+
+main .sec.cheer .cheer_list .cheer_item.h3 {
+  width: 100%;
+  margin: 40px 0 20px 0;
+  font-size: 17px;
+  color: #fff;
+  text-align: center;
+  background: #ffabce;
+  padding: 10px;
+}
+
+main .sec.cheer .cheer_list .cheer_item .pring {
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 3;
+}
+
+main .sec.cheer .cheer_list .cheer_item.apli {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 30px 0;
+}
+
+main .sec.cheer .cheer_table {
+  max-width: 400px;
+  font-size: 14px;
+  text-align: center;
+  padding: 0 10px;
+  margin: 30px auto;
+  display: -ms-grid;
+  display: grid;
+  grid-template: "... ...... ... ...... ..." 3px "... title title title ..." 40px "... ...... ... ...... ..." 6px "... many   ... reword ..." 80px "... ...... ... ...... ..." 6px "... one    ... go     ..." 50px "... ...... ... ...... ..." 6px "... two    ... roku   ..." 50px "... ...... ... ...... ..." 6px "... three  ... nana   ..." 50px "... ...... ... ...... ..." 6px "... four   ... hachi  ..." 50px "... ...... ... ...... ..." 6px "... five   ... kyuu   ..." 50px "... ...... ... ...... ..." 6px "... six    ... juu    ..." 50px "... ...... ... ...... ..." 6px /3px  .9fr  3px  1.1fr 3px;
+}
+
+main .sec.cheer .cheer_table .title {
+  grid-area: title;
+  width: 100%;
+  color: #fff;
+  font-size: 17px;
+  line-height: 40px;
+  background: #ffabce;
+}
+
+main .sec.cheer .cheer_table .many {
+  grid-area: many;
+  line-height: 25px;
+  padding: 15px 0;
+  border-bottom: 1px solid #777;
+  background: #fff6fb;
+}
+
+main .sec.cheer .cheer_table .reword {
+  grid-area: reword;
+  line-height: 80px;
+  border-bottom: 1px solid #777;
+  background: #fff6fb;
+}
+
+main .sec.cheer .cheer_table .one {
+  grid-area: one;
+  font-size: 14px;
+  line-height: 50px;
+  background: #fff6fb;
+}
+
+main .sec.cheer .cheer_table .go {
+  grid-area: go;
+  line-height: 50px;
+  background: #fff6fb;
+}
+
+main .sec.cheer .cheer_table .two {
+  grid-area: two;
+  font-size: 14px;
+  line-height: 50px;
+  background: #fff6fb;
+}
+
+main .sec.cheer .cheer_table .roku {
+  grid-area: roku;
+  line-height: 50px;
+  background: #fff6fb;
+}
+
+main .sec.cheer .cheer_table .roku .per1 {
+  font-size: 12px;
+}
+
+main .sec.cheer .cheer_table .three {
+  grid-area: three;
+  font-size: 14px;
+  line-height: 50px;
+  background: #fff6fb;
+}
+
+main .sec.cheer .cheer_table .nana {
+  grid-area: nana;
+  line-height: 50px;
+  background: #fff6fb;
+}
+
+main .sec.cheer .cheer_table .nana .per1 {
+  font-size: 12px;
+}
+
+main .sec.cheer .cheer_table .four {
+  grid-area: four;
+  font-size: 14px;
+  line-height: 50px;
+  background: #fff6fb;
+}
+
+main .sec.cheer .cheer_table .hachi {
+  grid-area: hachi;
+  line-height: 50px;
+  background: #fff6fb;
+}
+
+main .sec.cheer .cheer_table .hachi .per1 {
+  font-size: 12px;
+}
+
+main .sec.cheer .cheer_table .five {
+  grid-area: five;
+  font-size: 14px;
+  line-height: 50px;
+  background: #fff6fb;
+}
+
+main .sec.cheer .cheer_table .kyuu {
+  grid-area: kyuu;
+  line-height: 50px;
+  background: #fff6fb;
+}
+
+main .sec.cheer .cheer_table .kyuu .per1 {
+  font-size: 12px;
+}
+
+main .sec.cheer .cheer_table .six {
+  grid-area: six;
+  font-size: 14px;
+  line-height: 50px;
+  background: #fff6fb;
+}
+
+main .sec.cheer .cheer_table .juu {
+  grid-area: juu;
+  line-height: 50px;
+  background: #fff6fb;
+}
+
+main .sec.cheer .cheer_table .juu .per1 {
+  font-size: 12px;
+}
+
+main .sec.pay .h2 {
+  color: #fff;
+  font-size: 17px;
+  padding: 20px 30px;
+  letter-spacing: .2em;
+  margin-bottom: 30px;
+  background: #ffabce;
+}
+
+main .sec.pay .pay_list {
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  margin: 20px;
+}
+
+main .sec.pay .pay_list .pay_item {
+  margin: 20px;
+}
+
+main .sec.pay .pay_list .pay_item p {
+  max-width: 350px;
+  font-size: 12px;
+  margin: 10px auto 40px auto;
+}
+
+main .sec.pay .pay_list .pay_item.h3 {
+  width: 100%;
+  margin: 0;
+  font-size: 17px;
+  color: #fff;
+  text-align: center;
+  background: #ffabce;
+  padding: 10px;
+}
+
+main .sec.pay .pay_list .pay_item.apli {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 30px 0 60px 0;
+}
+
+main .sec.pay .pay_list .pay_item .pring {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 3;
+}
+
+@media (min-width: 520px) {
+  main {
+    max-width: 960px;
+    padding: 50px 10px;
+    margin: 0 auto;
+  }
+  main .sec {
+    background: #eee;
+  }
+  main .sec.fee {
+    margin-bottom: 70px;
+    border-radius: 0 0 20px 20px;
+  }
+  main .sec.fee .h2 {
+    color: #fff;
+    font-size: 17px;
+    letter-spacing: .2em;
+    text-align: center;
+    padding: 20px 30px;
+    background: #ffabce;
+  }
+  main .sec.fee .table {
+    width: 280px;
+    font-size: 17px;
+    margin: 0 auto;
+    padding-bottom: 80px;
+    display: -ms-grid;
+    display: grid;
+    grid-template: "gender gender" 60px "entry  e-item" 30px "e-text e-text" 100px "much   m-item" 45px "m-text m-text"  180px  180px;
+  }
+  main .sec.fee .table .gender {
+    grid-area: gender;
+    color: #ffabce;
+    text-align: center;
+  }
+  main .sec.fee .table .entry {
+    grid-area: entry;
+    padding-left: 10px;
+  }
+  main .sec.fee .table .entry span {
+    font-size: 14px;
+  }
+  main .sec.fee .table .e-item {
+    grid-area: e-item;
+    text-align: right;
+  }
+  main .sec.fee .table .e-item span {
+    display: inline-block;
+    font-size: 14px;
+    margin-right: 10px;
+  }
+  main .sec.fee .table .e-text {
+    grid-area: e-text;
+    font-size: 12px;
+    text-align: center;
+  }
+  main .sec.fee .table .e-text p {
+    margin: 10px 25px;
+    text-indent: -1.3em;
+  }
+  main .sec.fee .table .e-text p::before {
+    content: "※";
+    padding-right: 5px;
+  }
+  main .sec.fee .table .much {
+    grid-area: much;
+    padding-left: 10px;
+  }
+  main .sec.fee .table .m-item {
+    grid-area: m-item;
+    text-align: center;
+    line-height: 50px;
+  }
+  main .sec.fee .table .m-item span {
+    font-size: 14px;
+    margin-right: 10px;
+  }
+  main .sec.fee .table .m-text {
+    grid-area: m-text;
+    font-size: 12px;
+    text-align: left;
+    margin-bottom: 50px;
+  }
+  main .sec.fee .table .m-text p {
+    font-size: 12px;
+    margin: 10px 0 40px 10px;
+    text-indent: -1.6em;
+  }
+  main .sec.fee .table .m-text p::before {
+    content: "※";
+    padding-right: 10px;
+  }
+  main .sec.cheer .h2 {
+    color: #fff;
+    font-size: 17px;
+    text-align: center;
+    padding: 20px 30px;
+    letter-spacing: .2em;
+    margin-bottom: 30px;
+    background: #ffabce;
+  }
+  main .sec.cheer .h3 {
+    text-align: center;
+    margin: 50px;
+  }
+  main .sec.cheer .h3 .condition {
+    font-size: 17px;
+  }
+  main .sec.cheer .h3 .star {
+    color: yellow;
+    vertical-align: bottom;
+  }
+  main .sec.cheer .cheer_list {
+    max-width: 650px;
+    font-size: 15px;
+    letter-spacing: 0.1em;
+    line-height: 1.4;
+    padding-bottom: 30px;
+    margin: 0px auto;
+  }
+  main .sec.cheer .cheer_list .cheer_item {
+    margin: 10px 5%;
+  }
+  main .sec.cheer .cheer_list .cheer_item p {
+    max-width: 650px;
+    font-size: 12px;
+    text-align: left;
+    margin: 40px 20px;
+    text-indent: -1.5em;
+  }
+  main .sec.cheer .cheer_list .cheer_item p::before {
+    content: "※";
+    padding-right: 5px;
+  }
+  main .sec.cheer .cheer_list .cheer_item.h3 {
+    width: 100%;
+    margin: 40px 0 20px 0;
+    font-size: 17px;
+    color: #fff;
+    text-align: center;
+    background: #ffabce;
+    padding: 10px;
+  }
+  main .sec.cheer .cheer_list .cheer_item .pring {
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 3;
+  }
+  main .sec.cheer .cheer_list .cheer_item.apli {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    margin: 30px 0;
+  }
+  main .sec.cheer .cheer_table {
+    max-width: 460px;
+    font-size: 14px;
+    text-align: center;
+    margin: 30px auto;
+    display: -ms-grid;
+    display: grid;
+    grid-template: "... ...... ... ...... ..." 3px "... title title title ..." 40px "... ...... ... ...... ..." 6px "... many   ... reword ..." 80px "... ...... ... ...... ..." 6px "... one    ... go     ..." 50px "... ...... ... ...... ..." 6px "... two    ... roku   ..." 50px "... ...... ... ...... ..." 6px "... three  ... nana   ..." 50px "... ...... ... ...... ..." 6px "... four   ... hachi  ..." 50px "... ...... ... ...... ..." 6px "... five   ... kyuu   ..." 50px "... ...... ... ...... ..." 6px "... six    ... juu    ..." 50px "... ...... ... ...... ..." 6px /3px  .9fr  3px  1.1fr 3px;
+  }
+  main .sec.cheer .cheer_table .title {
+    grid-area: title;
+    width: 100%;
+    color: #fff;
+    font-size: 17px;
+    line-height: 40px;
+    background: #ffabce;
+  }
+  main .sec.cheer .cheer_table .many {
+    grid-area: many;
+    line-height: 25px;
+    padding: 15px 0;
+    border-bottom: 1px solid #777;
+    background: #fff6fb;
+  }
+  main .sec.cheer .cheer_table .reword {
+    grid-area: reword;
+    line-height: 80px;
+    border-bottom: 1px solid #777;
+    background: #fff6fb;
+  }
+  main .sec.cheer .cheer_table .one {
+    grid-area: one;
+    font-size: 14px;
+    line-height: 50px;
+    background: #fff6fb;
+  }
+  main .sec.cheer .cheer_table .go {
+    grid-area: go;
+    line-height: 50px;
+    background: #fff6fb;
+  }
+  main .sec.cheer .cheer_table .two {
+    grid-area: two;
+    font-size: 14px;
+    line-height: 50px;
+    background: #fff6fb;
+  }
+  main .sec.cheer .cheer_table .roku {
+    grid-area: roku;
+    line-height: 50px;
+    background: #fff6fb;
+  }
+  main .sec.cheer .cheer_table .roku .per1 {
+    font-size: 12px;
+  }
+  main .sec.cheer .cheer_table .three {
+    grid-area: three;
+    font-size: 14px;
+    line-height: 50px;
+    background: #fff6fb;
+  }
+  main .sec.cheer .cheer_table .nana {
+    grid-area: nana;
+    line-height: 50px;
+    background: #fff6fb;
+  }
+  main .sec.cheer .cheer_table .nana .per1 {
+    font-size: 12px;
+  }
+  main .sec.cheer .cheer_table .four {
+    grid-area: four;
+    font-size: 14px;
+    line-height: 50px;
+    background: #fff6fb;
+  }
+  main .sec.cheer .cheer_table .hachi {
+    grid-area: hachi;
+    line-height: 50px;
+    background: #fff6fb;
+  }
+  main .sec.cheer .cheer_table .hachi .per1 {
+    font-size: 12px;
+  }
+  main .sec.cheer .cheer_table .five {
+    grid-area: five;
+    font-size: 14px;
+    line-height: 50px;
+    background: #fff6fb;
+  }
+  main .sec.cheer .cheer_table .kyuu {
+    grid-area: kyuu;
+    line-height: 50px;
+    background: #fff6fb;
+  }
+  main .sec.cheer .cheer_table .kyuu .per1 {
+    font-size: 12px;
+  }
+  main .sec.cheer .cheer_table .six {
+    grid-area: six;
+    font-size: 14px;
+    line-height: 50px;
+    background: #fff6fb;
+  }
+  main .sec.cheer .cheer_table .juu {
+    grid-area: juu;
+    line-height: 50px;
+    background: #fff6fb;
+  }
+  main .sec.cheer .cheer_table .juu .per1 {
+    font-size: 12px;
+  }
+  main .sec.pay {
+    padding-bottom: 50px;
+    border-radius: 0 0 20px 20px;
+  }
+  main .sec.pay .pay_container {
+    max-width: 460px;
+    background: #fff;
+    margin: 0 auto;
+    border-radius: 20px;
+  }
+  main .sec.pay .pay_container .pay_list {
+    font-size: 15px;
+    letter-spacing: 0.1em;
+    line-height: 1.4;
+    margin: 0;
+  }
+  main .sec.pay .pay_container .pay_list .pay_item {
+    margin: 20px;
+  }
+  main .sec.pay .pay_container .pay_list .pay_item p {
+    max-width: 400px;
+    font-size: 12px;
+    line-height: 2;
+    margin: 10px auto 40px auto;
+  }
+  main .sec.pay .pay_container .pay_list .pay_item.h3 {
+    width: 100%;
+    margin: 0;
+    font-size: 17px;
+    color: #fff;
+    text-align: center;
+    background: #ffabce;
+    padding: 10px;
+  }
+  main .sec.pay .pay_container .pay_list .pay_item.apli {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 0 0 30px 0;
+    margin: 0;
+  }
+  main .sec.pay .pay_container .pay_list .pay_item .pring {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 3;
+  }
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+  footer
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
+.footer {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  background-color: #eee;
+}
+
+.footer p {
+  font-size: 15px;
+  line-height: 50px;
+}
+/*# sourceMappingURL=woman-fee.css.map */

@@ -1,0 +1,47 @@
+//＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+//  basic
+//＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+body {
+  color: #333;
+  font-family: 'Kokoro', 'Montserrat', sans-serif;
+}
+a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+	cursor: pointer;
+}
+p {
+  line-height: 1.5;
+}
+.span-strong {
+  font-style: italic;
+  font-weight: bold;
+}
+.span-small {
+  display: block;
+  font-size: 12px;
+  padding-top: 20px;
+}
+
+$primary-color1: rgb(255, 171, 206);
+$primary-color2: #056ffa;
+$primary-color3: rgb(131, 220, 255);
+$primary-color4: rgb(255, 30, 30);
+$primary-color5: #fff6fb;
+$primary-color6: rgb(190, 237, 255);
+$primary-color7: rgb(255, 225, 237);
+
+$font-mic: 12px;
+$font-mini: 14px;
+$font-small: 15px;
+$font-middle: 17px;
+$font-large: 24px;
+
+.icon-small {
+  font-size: 5px;
+}

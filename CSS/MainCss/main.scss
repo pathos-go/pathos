@@ -1,0 +1,1394 @@
+@charset "utf-8";
+@import "../basic";
+
+//＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+//  header
+//＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+.header {
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  background-color: transparent;
+  z-index: 10;
+  &_wrapper {
+    .header_btns1 {
+      display: flex;
+      justify-content: space-between;
+      .header_logo {
+        margin: 10px;
+        opacity: .7;
+      }
+      .checkbox {
+        display: none;
+      }
+      .hamburgerIcon {
+        width: 30px;
+        height: 30px;
+        margin: 10px 20px 10px 0;
+        cursor: pointer;
+        transition: .3s;
+        z-index: 20;
+        .menuLine {
+          position: relative;
+          top: 0;
+          display: block;
+          width: 100%;
+          height: 2px;
+          border-radius: 1px;
+          background-color: #333;
+          &:nth-child(1) {
+            margin: 4px auto;
+          }
+          &:nth-child(2) {
+            margin: 8px auto;
+          }
+          // チェック前のanimation指定
+          &:nth-child(1),
+          &:nth-child(3) {
+            top: 0;
+            transform: rotate(0);
+            transition: top .25s .2s, transform .25s;
+          }
+          &:nth-child(2) {
+            transition: width .25s;
+          }
+        }
+      }
+      // チェック後のハンバーガー
+      .checkbox:checked ~ .hamburgerIcon {
+        .menuLine:nth-child(1) {
+          top: 10px;
+          transform: rotate(135deg);
+          transition: top .25s, transform .25s .2s;
+        }
+        .menuLine:nth-child(2) {
+          width: 0;
+          transition: width .5s;
+        }
+        .menuLine:nth-child(3) {
+          top: -10px;
+          transform: rotate(-135deg);
+          transition: top .25s, transform .25s .2s;
+        }
+      }
+      .gnav {
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        z-index: 10;
+        text-align: center;
+        padding-top: 30px;
+        opacity: 0;
+        visibility: hidden;
+        transition: .3s;
+        background: rgba(255,255,255,.95);
+        .gnav_list {
+          .gnav_item {
+            font-size: 16px;
+            font-style: italic;
+            margin: 15px;
+            & > a {
+              padding: 15px;
+            }
+            &:nth-child(5) {
+              border: 0;
+              .gnav_gender {
+                display: flex;
+                justify-content: center;
+                margin: 0 auto 20px auto;
+                & > a ,span {
+                  font-style: normal;
+                  display: block;
+                  padding: 5px 15px;
+                  &.man {
+                    color: $primary-color3;
+                  }
+                  &.woman {
+                    color: $primary-color1;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      // チェック後のメニュー
+      .checkbox:checked ~ .gnav {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+    .header_btns2 {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      .header_btn {
+        color: #fff;
+        font-family: "ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+        background-color: $primary-color3;
+        padding: 10px 25px;
+        margin: 10px 20px;
+        border-radius: 3px;
+        border: 0;
+        box-shadow: 2px 2px 5px #777;
+        opacity: .9;
+      }
+      .header_signUp {
+        background: $primary-color1;
+      }
+    }
+  }
+}
+@media (min-width: 520px) {
+  .header {
+    margin: 0px auto;
+    &_wrapper {
+      .header_btns1 {
+        .gnav {
+          padding-top: 100px;
+          .gnav_list {
+            .gnav_item {
+              font-size: 20px;
+              margin: 30px;
+              & > a {
+                width: 30%;
+                border-radius: 25px;
+                color: #fff;
+                background-color: $primary-color1;
+                padding: 15px;
+                margin: 0 auto;
+                opacity: .7;
+              }
+              &:nth-of-type(5){
+                width: 30%;
+                border-radius: 35px;
+                color: #fff;
+                background-color: $primary-color1;
+                padding: 5px 0 5px 0;
+                margin: 0 auto;
+                opacity: .7;
+                .gnav_gender {
+                  margin: 0;
+                  & > a ,span {
+                    &.woman {
+                      color: $primary-color4;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+  mv
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
+@keyframes mvAnimation {
+  0% {
+    letter-spacing: .5em;
+    opacity: 0;
+    overflow: hidden;
+  }
+}
+.mv {
+  // width: 100%;
+  height: 100vh;
+  background: url(/img/pathos1.jpg) bottom left 30%/ cover no-repeat;
+  background-attachment: fixed;
+  .mv_list {
+    font-family: serif;
+    font-size: 30px;
+    letter-spacing: 0.1em;
+    text-shadow: 3px 3px 6px #fff;
+    .mv_item {
+      &-span {
+        font-family: serif;
+        font-size: 50px;
+        font-weight: 800;
+        color: $primary-color1;
+      }
+    }
+    .mv_item1 {
+      padding: 50px 0 0 20px;
+      animation: mvAnimation 5s;
+    }
+    .mv_item2 {
+      padding: 15px 0 0 20px;
+      animation: mvAnimation 8s;
+    }
+    .mv_item3 {
+      padding: 20px 0 0 20px;
+      animation: mvAnimation 12s;
+    }
+  }
+}
+@media (min-width: 520px) {
+  .mv {
+    height: 70vh;
+    background-position-x: 20%;
+    background-position-y: -80px;
+    .mv_list {
+      padding-top: 0px;
+      font-size: 40px;
+      .mv_item1 {
+        padding: 50px 0 0 50px;
+        animation: mvAnimation 5s;
+      }
+      .mv_item2 {
+        padding: 50px 0 0 120px;
+        animation: mvAnimation 8s;
+      }
+      .mv_item3 {
+        padding: 50px 0 0 200px;
+        animation: mvAnimation 12s;
+      }
+    }
+  }
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+  main
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
+.main {
+&_h1 {
+  font-size: 24px;
+  padding: 30px 30px;
+  // background: #eee;
+  text-shadow: 2px 2px 5px gray;
+  line-height: 2em;
+  font-family: Times, Times New Roman, Georgia, serif;
+  .span-middle {
+    display: block;
+    font-size: 26px;
+    color: $primary-color3;
+    opacity: 0.9;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+  }
+  .span-large {
+    display: block;
+    font-size: 36px;
+    font-weight: bold;
+    color: $primary-color1;
+    opacity: 0.9;
+    text-align: center;
+    padding: 10px;
+  }
+}
+// .secの基本構造
+.main_sec {
+  margin-bottom: 50px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  .main_h2 {
+    font-size: $font-middle;
+    font-weight: bold;
+    text-align: center;
+    // border-radius: 0px;
+    padding: 20px;
+    line-height: 1.4;
+    background: $primary-color1;
+    opacity: 0.9;
+    color: #fff;
+    & > p {
+      color: #333;
+      padding: 18px;
+    }
+  }
+  .main_list {
+    padding: 0 20px 40px 20px;
+    .main_item {
+      padding: 10px 0;
+      margin: 10px 0;
+      &__q {
+        font-size: $font-middle;
+        font-weight: bold;
+        margin: 20px 0;
+      }
+      &__a {
+        font-size: $font-small;
+        margin: 10px;
+      }
+    }
+  }
+}
+.main_needs {
+  margin-bottom: 0;
+  .main_h2 {
+    text-align: center;
+    background: #eee;
+    padding: 30px 0;
+    .main_needs__list {
+      width: 90%;
+      margin: 10px auto;
+      .main_needs__item {
+        color: #333;
+        font-size: $font-mic;
+        font-weight: normal;
+        margin: 40px 18px;
+      }
+    }
+  }
+}
+.main_problem {
+  .problem_h2 {
+    font-weight: bold;
+    background-color: $primary-color1;
+    text-align: center;
+    padding: 10px 0;
+    &__1 {
+      color: #fff;
+      padding: 0;
+    }
+    &__2 {
+      display: none;
+      color: #fff;
+      padding: 0;
+    }
+  }
+  .main_list {
+    padding: 20px 5%;
+    .main_item {
+      &__q {
+        text-align: center;
+      }
+      &__a {
+        line-height: 1.5;
+      }
+    }
+  }
+}
+.main_table {
+  .main_list {
+    padding: 0 20px;
+    .main_item {
+      &__q {
+        text-align: center;
+      }
+      &.abs {
+        padding-top: 0;
+        margin: 0 0 30px 0;
+        img {
+          width: 100%;
+          border-radius: 10px;
+          box-shadow: 3px 3px 7px #ddd;
+        }
+      }
+      &__condition1 {
+        max-width: 380px;
+        font-size: $font-middle;
+        margin: 50px auto;
+        padding: 30px 0;
+        border: 1px solid #333;
+        border-radius: 10px;
+        p {
+          text-align: center;
+          padding: 0 0 20px 0;
+          span {
+            margin: 0 5px 5px 0;
+            vertical-align: middle;
+          }
+        }
+        ul {
+          text-align: center;
+          li {
+            padding: 20px 0;
+            font-size: $font-mini;
+            &::before {
+              content: "🟡";
+              font-size: 5px;
+              padding-left: 5px;
+            }
+          }
+        }
+      }
+      &__afterTime {
+        margin: 20px 10px;
+      }
+      &__icon-img {
+        text-align: right;
+        padding: 20px 20px 0 0;
+        margin: 30px 0px;
+        background: rgb(65, 65, 255);
+        .icon-small {
+          font-size: 20px;
+          color: yellow;
+          vertical-align: top;
+        }
+        .icon-middle {
+          font-size: 30px;
+        }
+        .icon-large {
+          font-size: 60px;
+          color: gray;
+        }
+      }
+      &__condition2 {
+        font-size: $font-small;
+        ul {
+          padding: 0;
+          li {
+            line-height: 1.4;
+            text-indent: -1.4em;
+            margin: 20px;
+            &::before {
+              content: "※";
+              padding-right: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.main_merit {
+  .main_h2 {
+    padding: 20px 10px;
+  }
+  .main_list {
+    .main_item {
+      &__q {
+        width: 280px;
+        text-align: center;
+        margin: 30px auto;
+      }
+      &__a {
+        line-height: 1.6;
+        &.secretion {
+          line-height: 1.6;
+        }
+      }
+      &__roles {
+        padding: 10px;
+        .roleWrapper {
+          margin-bottom: 10px;
+// <h3>題名 アコーディオン元の位置
+          .accordion-trigger { //⬅️<h3>
+            max-width: 300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            .main_item__q { //⬅️<a>
+              width: 100%;
+              height: 100%;
+              color: #fff;
+              text-align: center;
+              background: $primary-color1;
+              opacity: 0.7;
+              color: #fff;
+              border-radius: 5px;
+              padding: 10px 0;
+              margin: 0;
+              position: relative;
+              // ">アイコン" を作成
+              .arrow {
+                color: #fff;
+                position: absolute;
+                top: 7px;
+                right: 10px;
+                transform: rotate(90deg);
+                transition: .3s;
+              }
+            }
+          }
+// <ul>内容 アコーディオン元の位置
+          .accordion-target {
+            height: 0;
+            opacity: 0;
+            overflow: hidden;
+            margin-bottom: 20px;
+            background: $primary-color5;
+            transition: .8s ease-in-out;
+            .efficacy_text {
+              &:last-child {
+                padding-bottom: 20px;
+              }
+              .main_item__q {
+                margin: 0px;
+                padding: 20px 10px 0 10px;
+              }
+              .main_item__a {
+                font-size: $font-small;
+                padding: 0 10px;
+              }
+            }
+          }
+        }
+      }
+      &.couple {
+        img {
+          width: 100%;
+          border-radius: 10px;
+          box-shadow: 3px 3px 7px #ddd;
+        }
+      }
+      &:last-child {
+        padding-top: 0;
+        margin-top: 0;
+      }
+    }
+  }
+}
+.main_message {
+  .main_list {
+    .main_item {
+      margin: 0;
+      & > p {
+        text-align: center;
+      }
+      .comment {
+        margin: 30px 0;
+        li {
+          .main_item__a {
+            line-height: 1.6;
+          }
+        }
+      }
+      .accordion-trigger { //⬅️<h3>
+        max-width: 300px;
+        margin: 0 auto;
+        line-height: 1.3;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        text-align: center;
+        & > .main_item__q { //⬅️<a>
+          width: 100%;
+          height: auto;
+          color: #fff;
+          text-align: center;
+          border-radius: 3px;
+          background: $primary-color1;
+          opacity: 0.6;
+          color: #fff;
+          padding: 10px 20px;
+          margin: 0;
+          &.m-height {
+            padding: 20px;
+          }
+        }
+        // 親メニュー ">アイコン" を作成
+        .arrow {
+          color: #fff;
+          position: absolute;
+          top: 20px;
+          right: 10px;
+          transform: rotate(90deg);
+          transition: .3s;
+        }
+      }
+      .accordion-target {
+        height: 0;
+        opacity: 0;
+        overflow: hidden;
+        background: $primary-color5;
+        transition: .8s ease-in-out;
+        .efficacy_text {
+          padding: 20px 0;
+          .main_item__q {
+            margin: 0px;
+            padding: 20px 10px 0 10px;
+          }
+          .main_item__a {
+            font-size: $font-small;
+            padding: 0 10px;
+          }
+        }
+      }
+      &.hug {
+        padding: 0;
+        margin-bottom: 20px;
+        img {
+          width: 100%;
+          border-radius: 10px;
+          box-shadow: 3px 3px 7px #ddd;
+        }
+      }
+    }
+  }
+}
+.main_bring {
+  .main_h2 {
+    color: #fff;
+    font-size: $font-middle;
+    padding: 20px 30px;
+    letter-spacing: .2em;
+    border-radius: 0;
+    background: $primary-color1;
+  }
+  .main_list {
+    font-size: $font-small;
+    letter-spacing: 0.1em;
+    line-height: 1.4;
+    padding: 0 0 20px 0;
+    margin: 20px 20px 0px 20px;
+    .main_item {
+      padding-left: 5%;
+      margin: 15px auto 0 auto;
+      h3 {
+        font-size: $font-middle;
+        padding: 10px;
+        &::before {
+          content: "✔︎";
+          padding-right: 10px;
+        }
+      }
+      &__a {
+        font-size: $font-mic;
+        margin: 0 0 0 37px;
+      }
+      &.strech {
+        padding: 0px;
+        img {
+          width: 100%;
+          border-radius: 10px;
+          box-shadow: 3px 3px 7px #ddd;
+        }
+      }
+    }
+  }
+}
+.main_access {
+  .main_h2 {
+    color: #fff;
+    font-size: $font-middle;
+    padding: 20px 30px;
+    letter-spacing: .2em;
+    text-align: center;
+    border-radius: 0;
+    background: $primary-color1;
+  }
+  .main_list {
+    font-size: $font-small;
+    letter-spacing: 0.1em;
+    line-height: 1.4;
+    padding: 20px 0;
+    margin: 20px;
+    .main_item {
+      margin: 20px 0;
+      .icon {
+        font-size: 30px;
+        padding-right: 20px;
+        vertical-align: bottom;
+      } 
+      h3 {
+        font-size: $font-middle;
+      }
+      &:nth-last-of-type(2) {
+        padding-left: 58px;
+        text-indent: -29px;
+      }
+    }
+  }
+  .map {
+    padding-bottom: 20px;
+  }
+}
+.main_flow {
+  .main_h2 {
+    background: $primary-color2;
+  }
+  .main_list {
+    font-size: $font-mini;
+    line-height: 1.4;
+    padding: 0;
+    margin: 20px;
+    .main_item {
+      line-height: 1.6;
+      padding: 0;
+      margin: 20px 10px;
+      &.pre {
+        padding: 10px 0;
+      }
+      &.apli {
+        display: flex;
+        justify-content: center;
+        padding: 0 0 20px 0;
+        margin: 0;
+        a {
+          margin: 0px;
+        }
+      }
+      .pring {
+        font-size: $font-mini;
+        font-weight: bold;
+        line-height: 2;
+      }
+      .accordion-trigger { //⬅️<h3>
+        max-width: 300px;
+        margin: 0 auto;
+        position: relative;
+        & > .main_item__q { //⬅️<a>
+          width: 100%;
+          height: auto;
+          color: #fff;
+          text-align: center;
+          border-radius: 5px;
+          background: $primary-color3;
+          color: #fff;
+          padding: 10px 20px;
+          margin: 0;
+        }
+        // 親メニュー ">アイコン" を作成
+        .arrow {
+          color: #fff;
+          position: absolute;
+          top: 12px;
+          right: 10px;
+          transform: rotate(90deg);
+          transition: .3s;
+        }
+      }
+      .accordion-target {
+        height: 0;
+        opacity: 0;
+        overflow: hidden;
+        background: rgba(60, 196, 250, .1);
+        transition: .8s ease-in-out;
+        .efficacy_text {
+          padding: 20px 0;
+          .main_item__q {
+            margin: 0px;
+            padding: 20px 10px 0 10px;
+          }
+          .main_item__a {
+            font-size: $font-mini;
+            &.ps {
+              font-size: $font-mic;
+            }
+          }
+        }
+      }
+      &.bed {
+        margin: 50px 0 0 0;
+        img {
+          width: 100%;
+          border-radius: 10px;
+          box-shadow: 3px 3px 7px #ddd;
+        }
+      }
+    }
+  }
+  .comment {
+    text-align: center;
+    padding: 30px 0;
+  }
+}
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+.active アコーディオン開いた状態
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
+.main_sec {
+  .main_list {
+    .main_item {
+      &__roles {
+        .roleWrapper {
+          // .main_meritの<h3>題名 アイコン<上下動
+          .accordion-trigger.active {
+            margin-bottom: 0;
+            & > .main_item__q { //⬅️<a>
+              .arrow {
+                transform: rotate(-90deg);
+              }
+            }
+          }
+        }
+      }
+      // .main_messageの<h3>親要素 アイコン上下＜
+      .accordion-trigger.active {
+        .arrow {
+          transform: rotate(-90deg) translateY(0px);
+        }
+      }
+    }
+  }
+}
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+.main のレスポンシブ
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
+@media (min-width: 520px) {
+.main {
+  max-width: 960px;
+  padding: 0 10px;
+  margin: 0 auto;
+&_h1 {
+  font-size: 24px;
+  padding: 30px 30px;
+  // background: $primary-color5;
+  text-shadow: 2px 2px 5px gray;
+  line-height: 2em;
+  font-family: Times, Times New Roman, Georgia, serif;
+  // margin-top: 50px;
+  // border-radius: 20px 20px 0 0;
+  .span-middle {
+    display: block;
+    font-size: 36px;
+    color: $primary-color3;
+    opacity: 0.9;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+  }
+  .span-large {
+    display: block;
+    font-size: 46px;
+    font-weight: bold;
+    color: $primary-color1;
+    opacity: 0.9;
+    text-align: center;
+    padding: 10px;
+  }
+}
+// .secの基本構造
+.main_sec {
+  margin-bottom: 50px;
+  border-radius: 0 0 20px 20px;
+  background: #eee;
+  .main_h2 {
+    font-size: $font-middle;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    line-height: 1.4;
+    background: $primary-color1;
+    opacity: 0.9;
+    color: #fff;
+    & > p {
+      color: #333;
+      padding: 18px;
+    }
+  }
+  .main_list {
+    padding: 0 20px;
+    .main_item {
+      max-width: 630px;
+      margin: 0 auto;
+      &__q {
+        text-align: center;
+        margin: 40px 0;
+      }
+      &__a {
+        line-height: 2;
+        padding-left: 5%;
+        margin: 10px 5% 10px 0;
+      }
+    }
+  }
+}
+.main_needs {
+  .main_h2 {
+    background: #eee;
+    padding: 30px 0;
+    border-radius: 0 0 20px 20px;
+    p {
+      font-size: $font-middle
+    }
+    .main_needs__list {
+      width: 90%;
+      margin: 10px auto;
+      .main_needs__item {
+        color: #333;
+        font-size: $font-mini;
+        font-weight: normal;
+        margin: 40px 18px;
+      }
+    }
+  }
+}
+.main_problem {
+  .problem_h2 {
+    font-weight: bold;
+    background-color: $primary-color1;
+    text-align: center;
+    padding: 10px 0;
+    opacity: .9;
+    &__1 {
+      display: none;
+      color: #fff;
+      padding: 0;
+    }
+    &__2 {
+      display: block;
+      color: #fff;
+      padding: 10px;
+    }
+  }
+  .main_list {
+    padding: 20px 5%;
+    .main_item {
+      max-width: 690px;
+      &:last-of-type {
+        .main_item__a {
+          padding-left: 10%;
+        }
+      }
+    }
+  }
+}
+.main_table {
+  background: #eee;
+  .main_list {
+    padding: 0 20px;
+    .main_item {
+      max-width: 630px;
+      margin: 0 auto;
+      &__q {
+        text-align: center;
+        margin: 40px 0;
+      }
+      &__a {
+        line-height: 1.5;
+        padding-left: 5%;
+        margin: 10px 5% 10px 0;
+      }
+      &.abs {
+        padding-top: 0;
+        margin: 30px auto;
+        img {
+          display: block;
+          width: 460px;
+          margin: 0 auto;
+          border-radius: 10px;
+          box-shadow: 3px 3px 7px #ddd;
+        }
+      }
+      &.table {
+        padding: 0 0 50px 0;
+        .main_item__a {
+          padding-left: 7%;
+        }
+      }
+      &__condition1 {
+        max-width: 480px;
+        font-size: $font-middle;
+        background: #fff;
+        margin: 50px auto;
+        padding: 30px 0;
+        border: 1px solid #333;
+        border-radius:15px;
+        box-shadow: 3px 3px 7px #fff;
+        p {
+          text-align: center;
+          padding: 0 0 20px 0;
+          span {
+            margin: 0 5px 5px 0;
+            vertical-align: middle;
+          }
+        }
+        ul {
+          text-align: center;
+          li {
+            padding: 20px 0;
+            font-size: $font-mini;
+            &::before {
+              content: "🟡";
+              font-size: 5px;
+              padding-left: 5px;
+            }
+          }
+        }
+      }
+      &__afterTime {
+        text-align: center;
+        margin: 20px 10px;
+      }
+      &__icon-img {
+        max-width: 750px;
+        text-align: right;
+        padding: 20px 20px 0 0;
+        margin: 30px auto;
+        background: rgb(65, 65, 255);
+        opacity: .9;
+        .icon-small {
+          font-size: 20px;
+          color: yellow;
+          vertical-align: top;
+        }
+        .icon-middle {
+          font-size: 30px;
+        }
+        .icon-large {
+          font-size: 60px;
+          color: gray;
+        }
+      }
+      &__condition2 {
+        max-width: 750px;
+        font-size: $font-small;
+        margin: 0 auto;
+        ul {
+          padding: 0;
+          li {
+            line-height: 2;
+            text-indent: -1.4em;
+            margin: 20px;
+            &::before {
+              content: "※";
+              padding-right: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.main_merit {
+  background: #eee;
+  .main_list {
+    .main_item {
+      max-width: 750px;
+      margin: 0 auto;
+      &__q {
+        width: 280px;
+        text-align: center;
+        margin: 30px auto;
+      }
+      &__a {
+        line-height: 1.6;
+        padding-left: 10%;
+        &.secretion {
+          line-height: 1.6;
+        }
+      }
+      &__roles {
+        padding: 10px;
+        .roleWrapper {
+          margin-bottom: 10px;
+// <h3>題名 アコーディオン元の位置
+          .accordion-trigger { //⬅️<h3>
+            max-width: 300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            .main_item__q { //⬅️<a>
+              width: 100%;
+              height: 100%;
+              color: #fff;
+              text-align: center;
+              background: $primary-color1;
+              opacity: 0.7;
+              color: #fff;
+              border-radius: 5px;
+              padding: 10px 0;
+              margin: 0;
+              position: relative;
+              // ">アイコン" を作成
+              .arrow {
+                color: #fff;
+                position: absolute;
+                top: 7px;
+                right: 10px;
+                transform: rotate(90deg);
+                transition: .3s;
+              }
+            }
+          }
+// <ul>内容 アコーディオン元の位置
+          .accordion-target {
+            height: 0;
+            opacity: 0;
+            overflow: hidden;
+            margin-bottom: 20px;
+            background: $primary-color5;
+            transition: .8s ease-in-out;
+            .efficacy_text {
+              &:last-child {
+                padding-bottom: 20px;
+              }
+              .main_item__q {
+                margin: 0px;
+                padding: 20px 10px 0 10px;
+              }
+              .main_item__a {
+                font-size: $font-small;
+                padding: 0 10px;
+              }
+            }
+          }
+        }
+      }
+      &.couple {
+        img {
+          display: block;
+          width: 460px;
+          margin: 50px auto;
+          border-radius: 10px;
+          box-shadow: 3px 3px 7px #ddd;
+        }
+      }
+      &:last-child {
+        padding-top: 0;
+        margin-top: 0;
+      }
+    }
+  }
+}
+.main_message {
+  background: #eee;
+  .main_list {
+    .main_item {
+      max-width: 750px;
+      margin: 0 auto;
+      & > p {
+        text-align: center;
+      }
+      .comment {
+        padding-left: 10%;
+        margin: 30px 0;
+        li {
+          .main_item__a {
+            line-height: 1.6;
+          }
+        }
+      }
+      .accordion-trigger { //⬅️<h3>
+        max-width: 300px;
+        margin: 0 auto;
+        line-height: 1.3;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        text-align: center;
+        & > .main_item__q { //⬅️<a>
+          width: 100%;
+          height: auto;
+          color: #fff;
+          text-align: center;
+          border-radius: 3px;
+          background: $primary-color1;
+          opacity: 0.6;
+          color: #fff;
+          padding: 10px 20px;
+          margin: 0;
+          &.m-height {
+            padding: 20px;
+          }
+        }
+        // 親メニュー ">アイコン" を作成
+        .arrow {
+          color: #fff;
+          position: absolute;
+          top: 20px;
+          right: 10px;
+          transform: rotate(90deg);
+          transition: .3s;
+        }
+      }
+      .accordion-target {
+        height: 0;
+        opacity: 0;
+        overflow: hidden;
+        background: $primary-color5;
+        transition: .8s ease-in-out;
+        .efficacy_text {
+          padding: 20px 0;
+          .main_item__q {
+            margin: 0px;
+            padding: 20px 10px 0 10px;
+          }
+          .main_item__a {
+            font-size: $font-small;
+            padding: 0 10px;
+          }
+        }
+      }
+      &.hug {
+        padding: 0;
+        padding: 50px 0;
+        img {
+          display: block;
+          width: 460px;
+          margin: 0px auto;
+          border-radius: 10px;
+          box-shadow: 3px 3px 7px #ddd;
+        }
+      }
+    }
+  }
+}
+.main_bring {
+  background: #eee;
+  .main_h2 {
+    margin-bottom: 20px;
+  }
+  .main_list {
+    margin: 0;
+    .main_item {
+      max-width: 750px;
+      padding: 20px 20px 20px 20%;
+      margin: 0 auto;
+      h3 {
+        font-size: $font-middle;
+        padding: 10px;
+        &::before {
+          content: "✔︎";
+          padding-right: 10px;
+        }
+      }
+      &__a {
+        font-size: $font-mic;
+        margin: 0 0 0 5%;
+      }
+      &.strech {
+        padding: 50px 0;
+        img {
+          display: block;
+          width: 460px;
+          margin: 0 auto;
+          border-radius: 10px;
+          box-shadow: 3px 3px 7px #ddd;
+        }
+      }
+    }
+  }
+}
+.main_access {
+  background: #eee;
+  .main_h2 {
+    color: #fff;
+    font-size: $font-middle;
+    padding: 20px 30px;
+    letter-spacing: .2em;
+    text-align: center;
+    border-radius: 0;
+    background: $primary-color1;
+  }
+  .main_list {
+    font-size: $font-small;
+    letter-spacing: 0.1em;
+    line-height: 1.4;
+    padding: 20px 20px 20px 15%;
+    margin: 20px;
+    .main_item {
+      padding-left: 5%;
+      margin: 20px 0;
+      .icon {
+        font-size: 30px;
+        padding-right: 20px;
+        vertical-align: bottom;
+      } 
+      h3 {
+        font-size: $font-middle;
+      }
+      &:nth-last-of-type(2) {
+        padding-left: 58px;
+        margin-left: 5%;
+        text-indent: -29px;
+      }
+    }
+  }
+  .map {
+    padding: 0 10px 50px 10px;
+  }
+}
+.main_flow {
+  background: #eee;
+  .main_h2 {
+    background: $primary-color2;
+  }
+  .main_list {
+    padding: 20px 0;
+    .main_item {
+      padding: 15px;
+      &.pre {
+        padding: 10px 0 30px 10%;
+      }
+      &.apli {
+        display: flex;
+        justify-content: center;
+        padding: 0 0 40px 0;
+        margin: 0 auto;
+        a {
+          margin: 0px;
+        }
+      }
+      .pring {
+        font-size: $font-mini;
+        font-weight: bold;
+        line-height: 2;
+      }
+      .accordion-trigger { //⬅️<h3>
+        max-width: 300px;
+        margin: 0 auto;
+        position: relative;
+        & > .main_item__q { //⬅️<a>
+          width: 100%;
+          height: auto;
+          color: #fff;
+          text-align: center;
+          border-radius: 5px;
+          background: $primary-color3;
+          color: #fff;
+          padding: 10px 20px;
+          margin: 0;
+        }
+        // 親メニュー ">アイコン" を作成
+        .arrow {
+          color: #fff;
+          position: absolute;
+          top: 12px;
+          right: 10px;
+          transform: rotate(90deg);
+          transition: .3s;
+        }
+      }
+      .accordion-target {
+        height: 0;
+        opacity: 0;
+        overflow: hidden;
+        background: rgba(60, 196, 250, .1);
+        transition: .8s ease-in-out;
+        .efficacy_text {
+          padding: 20px 0;
+          .main_item__q {
+            margin: 0px;
+            padding: 20px 10px 0 10px;
+          }
+          .main_item__a {
+            font-size: $font-mini;
+            &.ps {
+              font-size: $font-mic;
+            }
+          }
+        }
+      }
+      &.bed {
+        margin: 50px auto 0;
+        img {
+          display: block;
+          width: 460px;
+          margin: 0 auto;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+  .comment {
+    text-align: center;
+    padding: 0 0 50px 0;
+  }
+}
+}
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+  footer
+  ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
+.footer {
+  height: 100px;
+  padding-top: 15px;
+  text-align: center;
+  background-color: #eee;
+  p {
+    font-size: $font-small;
+    margin: 10px;
+  }
+}

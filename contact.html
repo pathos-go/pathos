@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pathos contact</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+	<link rel="stylesheet" href="CSS/ContactCss/contact.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script src="JS/main.js" defer></script>
+</head>
+
+<body>
+	<header class="header">
+		<div class="header_wrapper">
+			<div class="header_btns1">
+				<div class="header_logo">
+					<img src="img/pathosLogo-small.png" alt="Pathosロゴ">
+				</div>
+				<input type="checkbox" class="checkbox" id="hamburger">
+				<label class="hamburgerIcon" for="hamburger">
+					<span class="menuLine"><a href="#"></a></span>
+					<span class="menuLine"><a href="#"></a></span>
+					<span class="menuLine"><a href="#"></a></span>
+				</label>
+				<nav class="gnav">
+					<ul class="gnav_list">
+						<li class="gnav_item"><a href="main.html">メイン</a></li>
+						<li class="gnav_item"><a href="entry.html">開催日 ＆ 参加申込み</a></li>
+						<li class="gnav_item"><a href="https://forms.gle/yvLtLMPi8HDDvCHc6">オファー</a></li>
+						<li class="gnav_item"><a href="https://forms.gle/QvtCzG7rk8wY7aDv8">アンケート</a></li>
+						<li class="gnav_item">
+              <p>参加費</p>
+              <div class="gnav_gender">
+                <a class="man" href="man-fee.html">男性</a>
+                <span>／</span>
+                <a class="woman" href="woman-fee.html">女性</a>
+              </div>
+            </li>
+						<li class="gnav_item"><a href="terms.html">利用規約</a></li>
+						<li class="gnav_item"><a href="https://forms.gle/JQVsf4pZCVo5iBrbA">問合せ</a></li>
+						<li class="gnav_item"><a href="introduction.html">主催者紹介</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+
+	<main class="main">
+    <section class="sec contact">
+      <h2 class="h2">お問合せ</h2>
+			<ul class="contact_list">
+				<li class="contact_item">Pathosへのご質問・ご要望</li>
+				<li class="contact_item">チームの一員として一緒に運営したい<br>etc...</li>
+			</ul>
+			<form action="#" method="POST">
+				<label for="name">氏名</label>
+				<input type="text" id="name" name="name" required>
+				<label for="email">e-mail</label>
+				<input type="email" id="email" name="email" size="38" maxlength="38" required>
+				<label for="contact">お問合せ内容</label>
+				<textarea name="contact" id="contact" cols="38" rows="10" required></textarea>
+			</form>
+			<div>
+				<button class="button" type="submit">入力内容を確認する</button>
+			</div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>
+      <small>&copy; 2021 Pathos,</small>
+    </p>
+  </footer>
+</body>
+</html>

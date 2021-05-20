@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pathos joinform</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+	<link rel="stylesheet" href="CSS/JoinformCss/joinform.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script src="JS/joinform.js" defer></script>
+</head>
+
+<body>
+	<header class="header">
+		<div class="header_wrapper">
+			<div class="header_btns1">
+				<div class="header_logo">
+					<img src="img/pathosLogo-small.png" alt="Pathosロゴ">
+				</div>
+				<input type="checkbox" class="checkbox" id="hamburger">
+				<label class="hamburgerIcon" for="hamburger">
+					<span class="menuLine"><a href="#"></a></span>
+					<span class="menuLine"><a href="#"></a></span>
+					<span class="menuLine"><a href="#"></a></span>
+				</label>
+				<nav class="gnav">
+					<ul class="gnav_list">
+						<li class="gnav_item"><a href="main.html">メイン</a></li>
+						<li class="gnav_item"><a href="entry.html">開催日 ＆ 参加申込み</a></li>
+						<li class="gnav_item"><a href="https://forms.gle/yvLtLMPi8HDDvCHc6">オファー</a></li>
+						<li class="gnav_item"><a href="https://forms.gle/QvtCzG7rk8wY7aDv8">アンケート</a></li>
+						<li class="gnav_item">
+              <p>参加費</p>
+              <div class="gnav_gender">
+                <a class="man" href="man-fee.html">男性</a>
+                <span>／</span>
+                <a class="woman" href="woman-fee.html">女性</a>
+              </div>
+            </li>
+						<li class="gnav_item"><a href="terms.html">利用規約</a></li>
+						<li class="gnav_item"><a href="https://forms.gle/JQVsf4pZCVo5iBrbA">問合せ</a></li>
+						<li class="gnav_item"><a href="introduction.html">主催者紹介</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+
+	<main class="main">
+    <section class="sec joinform">
+      <h2 class="h2">新規入会フォーム</h2>
+			<!-- <ul class="joinform_list">
+				<li class="joinform_item">Pathosについてのご質問</li>
+				<li class="joinform_item">チームの一員としてボランティアで働きたい方etc...</li>
+			</ul> -->
+			<div class="joinform_dl">
+				<p>
+					参加費等金銭の授受及び事務局とのメッセージのやりとりには、<span class="pring">" pring（プリン）" </span>アプリを利用します。<br>
+					まだインストールされていない方は、申込み前にダウンロード及び登録を完了させていただけますようお願い致します。
+				</p>
+	
+				<div class="apli">
+					<a class="app" href="https://apps.apple.com/jp/app/pring-%E3%83%97%E3%83%AA%E3%83%B3-%E9%80%81%E9%87%91%E3%82%A2%E3%83%97%E3%83%AA/id1295628648?itsct=apps_box_badge&amp;itscg=30200" style="display: inline-block; overflow: hidden; border-radius: 7px; width: 90px; height: 32px;"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ja-jp?size=250x83&amp;releaseDate=1508198400&h=bc6a87bfa775ebdeaaa6d3c671216822" alt="Download on the App Store" style="border-radius: 7px; width: 90px; height: 32px;"></a>
+	
+					<a class="android" href='https://play.google.com/store/apps/details?id=jp.pring&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img width="100" alt='Google Play で手に入れよう' src='https://play.google.com/intl/ja/badges/static/images/badges/ja_badge_web_generic.png'/></a>
+				</div>
+			</div>
+
+			<form class="form" action="#" method="POST">
+				<div class="form_item">
+					<label for="nickname">
+						pringアプリのニックネーム
+					</label>
+					<input type="text" id="nickname" name="nickname" required>
+					<p class="nickname_p">そのままサークル内でのニックネームとなります</p>
+				</div>
+
+				<!-- <label for="name">氏名</label>
+				<input type="text" id="name" name="name" required> -->
+				<div class="form_item">
+					<label for="gender">性別：</label>
+					<input type="radio" name="age" value="male">男性
+					<input type="radio" name="age" value="female" checked>女性
+				</div>
+
+				<div class="form_item">
+					<label for="age">年齢：</label>
+					<select id="age" name="age" required></select>
+				</div>
+				
+				<!-- <div class="form_item">
+					<label for="tel">TEL：</label>
+					<input type="text" id="tel" name="tel" required>
+				</div> -->
+
+				<div class="form_item">
+					<input type="checkbox" name="checkbox" required> 利用規約に同意します
+				</div>
+
+				<!-- <label for="email">メールアドレス</label>
+				<input type="email" id="email" name="email" size="38" maxlength="38" required> -->
+			</form>
+
+
+			<div class="btn">
+				<button class="button" type="submit">入力内容を確認する</button>
+			</div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>
+      <small>&copy; 2021 Pathos,</small>
+    </p>
+  </footer>
+</body>
+</html>

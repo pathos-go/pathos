@@ -1,0 +1,145 @@
+@charset "utr-8";
+
+@import "../basic";
+@import "../header";
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+  main
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
+.main {
+  padding-top: 50px;
+  .sec_intro {
+    .h2 {
+      color: #fff;
+      font-size: $font-middle;
+      padding: 20px;
+      text-align: center;
+      letter-spacing: .2em;
+      background: $primary-color1;
+    }
+    .intro_list {
+      padding: 20px;
+      .intro_item {
+        max-width: 350px;
+        padding: 20px 0;
+        margin: 0 auto;
+        .title {
+          font-size: $font-middle;
+          text-align: center;
+          padding: 10px;
+        }
+        .name {
+          text-align: center;
+        }
+        img {
+          display: block;
+          width: 90%;
+          border-radius: 10px;
+          margin: 10px auto;
+        }
+        .intro_p {
+          margin: 20px 0;
+          .intro_line {
+            font-size: $font-mini;
+            margin: 10px;
+            &.kind {
+              padding-top: 10px;
+              text-align: center;
+              &:first-of-type {
+                padding-top: 0;
+              }
+            }
+          }
+        }
+        &.last {
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 520px) {
+.main {
+  max-width: 960px;
+  padding-top: 50px;
+  margin: 0 auto;
+  .sec_intro {
+    margin: 0px 10px 50px 10px;
+    background: #eee;
+    border-radius: 20px;
+    .intro_container {
+      .h2 {
+        color: #fff;
+        font-size: $font-middle;
+        padding: 20px;
+        text-align: center;
+        letter-spacing: .2em;
+        background: $primary-color1;
+      }
+      .intro_list {
+        padding: 20px;
+        .intro_item {
+          max-width: 90%;
+          padding: 20px;
+          margin: 0 auto;
+          .title {
+            font-size: $font-middle;
+            text-align: center;
+            padding: 10px;
+          }
+          .item_container {
+            padding: 20px;
+            background: #fff;
+            border-radius: 20px;
+            .name {
+              text-align: center;
+            }
+            img {
+              display: block;
+              width: 50%;
+              border-radius: 10px;
+              margin: 20px 30px 20px 0;
+              float: left;
+            }
+            .intro_p {
+              margin: 20px 0;
+              .intro_line {
+                font-size: $font-mini;
+                margin: 10px;
+                &.kind {
+                  padding: 10px;
+                  font-weight: bold;
+                  text-align: left;
+                  &:first-of-type {
+                    padding-top: 0;
+                  }
+                }
+              }
+            }
+            &.last {
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+  footer
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
+.footer {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  background-color: #eee;
+  // position: absolute;
+  // bottom: 0;
+  p {
+    font-size: $font-small;
+    line-height: 50px;
+  }
+}
