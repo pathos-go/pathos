@@ -273,7 +273,7 @@ p {
 
 .mv {
   height: 100vh;
-  background: url(/img/pathos1.jpg) bottom left 30%/cover no-repeat;
+  background: image-url(/img/pathos1.jpg) bottom left 30%/cover no-repeat;
   background-attachment: fixed;
 }
 
